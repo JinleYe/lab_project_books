@@ -18,7 +18,7 @@ public class Author {
 
     // The joinColumn attribute will connect to the owner
     // side of the relationship,and the inverseJoinColumn to the other side
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany
     @JoinTable(
             name = "authors_books",
             joinColumns = {@JoinColumn(name = "author_id", nullable = false)},

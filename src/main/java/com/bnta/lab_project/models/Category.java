@@ -16,7 +16,7 @@ public class Category {
     @Column(unique = true)
     private String name;
 
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany
     @JoinTable(
             name = "categories_books",
             joinColumns = {@JoinColumn(name = "category_id", nullable = false)},
