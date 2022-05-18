@@ -22,7 +22,7 @@ public class Author {
     @JoinTable(
             name = "authors_books",
             joinColumns = {@JoinColumn(name = "author_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "book_is", nullable = false)}
+            inverseJoinColumns = {@JoinColumn(name = "book_id", nullable = false)}
     )
     private List<Book> books;
 
