@@ -28,9 +28,9 @@ public class Author {
 
     protected Author(){}
 
-    public Author(String name) {
+    public Author(String name, List<Book> books ) {
         this.name = name;
-        this.books = new ArrayList<>();
+        this.books = books;
     }
 
     public Long getId() {

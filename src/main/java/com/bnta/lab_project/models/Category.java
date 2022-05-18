@@ -26,9 +26,9 @@ public class Category {
 
     protected Category(){}
 
-    public Category(String name) {
+    public Category(String name, List<Book> books) {
         this.name = name;
-        this.books = new ArrayList<>();
+        this.books = books;
     }
 
     public Long getId() {
