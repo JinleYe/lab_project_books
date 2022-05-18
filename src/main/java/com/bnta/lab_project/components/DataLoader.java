@@ -11,10 +11,12 @@ import com.bnta.lab_project.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.Arrays;
 
+@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -63,6 +65,9 @@ public class DataLoader implements ApplicationRunner {
         Author author10 = new Author("Davy Cielen", Arrays.asList(book5));
         Author author11 = new Author("Mike McQuaid", Arrays.asList(book6));
 
+        authorRepository.saveAll(Arrays.asList(author1, author2, author3, author4, author5, author6, author7,
+                author8, author9, author10, author11));
+
         Review review1 = new Review(4, "Great book", book1);
         Review review2 = new Review(3, "Average book", book1);
         Review review3 = new Review(5, "Easy to digest", book2);
@@ -77,6 +82,9 @@ public class DataLoader implements ApplicationRunner {
         Review review12 = new Review(5, "Glad to buy it", book7);
         Review review13 = new Review(5, "Every software engineer deserves one", book7);
         Review review14 = new Review(4, "Nice author", book8);
+
+        reviewRepository.saveAll(Arrays.asList(review1, review2, review3, review4, review5, review6,
+                review7, review8, review9, review10, review11, review12, review13, review14));
 
 
 
