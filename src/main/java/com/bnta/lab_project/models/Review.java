@@ -1,6 +1,8 @@
 package com.bnta.lab_project.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Review {
     private String comment;
 
     @ManyToOne
+    @JsonIgnoreProperties(value = "reviews")
     @JoinColumn(name = "book_id", nullable = false)
     private Book book;
 

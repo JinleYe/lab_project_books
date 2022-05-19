@@ -1,6 +1,8 @@
 package com.bnta.lab_project.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Author {
     // The joinColumn attribute will connect to the owner
     // side of the relationship,and the inverseJoinColumn to the other side
     @ManyToMany
+    @JsonIgnoreProperties(value = "authors")
     @JoinTable(
             name = "authors_books",
             joinColumns = {@JoinColumn(name = "author_id", nullable = false)},

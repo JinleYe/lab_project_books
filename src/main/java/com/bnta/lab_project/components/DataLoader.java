@@ -46,10 +46,10 @@ public class DataLoader implements ApplicationRunner {
 
         bookRepository.saveAll(Arrays.asList(book1, book2, book3, book4, book5, book6, book7, book8));
 
-        Category category1 = new Category("Java", Arrays.asList(book1, book2, book3, book4));
-        Category category2 = new Category("Data Science", Arrays.asList(book3, book5));
-        Category category3 = new Category("Software Engineering", Arrays.asList(book1, book6));
-        Category category4 = new Category("Coding Practices", Arrays.asList(book7, book8));
+        Category category1 = new Category("java", Arrays.asList(book1, book2, book3, book4));
+        Category category2 = new Category("data science", Arrays.asList(book3, book5));
+        Category category3 = new Category("software 3ngineering", Arrays.asList(book1, book6));
+        Category category4 = new Category("coding practices", Arrays.asList(book7, book8));
 
         categoryRepository.saveAll(Arrays.asList(category1, category2, category3, category4));
 

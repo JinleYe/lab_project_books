@@ -1,6 +1,8 @@
 package com.bnta.lab_project.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,13 +26,16 @@ public class Book {
     private Float price;
 
     @ManyToMany(mappedBy = "books")
+    @JsonIgnoreProperties(value = "books")
     private List<Author> authors;
 
     @ManyToMany(mappedBy = "books")
+    @JsonIgnoreProperties(value = "books")
     private List<Category> categories;
 
     @OneToMany
-    private List<Review> comments;
+    @JsonIgnoreProperties(value = "books")
+    private List<Review> reviews;
 
     protected Book(){}
 
@@ -40,7 +45,7 @@ public class Book {
         this.price = price;
         this.authors = new ArrayList<>();
         this.categories = new ArrayList<>();
-        this.comments = new ArrayList<>();
+        this.reviews = new ArrayList<>();
     }
 
     public Long getId() {
@@ -67,8 +72,8 @@ public class Book {
         return categories;
     }
 
-    public List<Review> getComments() {
-        return comments;
+    public List<Review> getReviews() {
+        return reviews;
     }
 
     public void setTitle(String title) {
@@ -91,8 +96,8 @@ public class Book {
         this.categories = categories;
     }
 
-    public void setComments(List<Review> comments) {
-        this.comments = comments;
+    public void setReviews(List<Review> comments) {
+        this.reviews = comments;
     }
 
 

@@ -1,6 +1,8 @@
 package com.bnta.lab_project.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +19,7 @@ public class Category {
     private String name;
 
     @ManyToMany
+    @JsonIgnoreProperties(value = "categories")
     @JoinTable(
             name = "categories_books",
             joinColumns = {@JoinColumn(name = "category_id", nullable = false)},
