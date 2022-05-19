@@ -33,8 +33,8 @@ public class Book {
     @JsonIgnoreProperties(value = "books")
     private List<Category> categories;
 
-    @OneToMany
-    @JsonIgnoreProperties(value = "books")
+    @OneToMany(mappedBy = "book")
+    @JsonIgnoreProperties(value = "book")
     private List<Review> reviews;
 
     protected Book(){}
