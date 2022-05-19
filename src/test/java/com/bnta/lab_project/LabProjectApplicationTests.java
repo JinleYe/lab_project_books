@@ -21,10 +21,24 @@ class LabProjectApplicationTests {
     void contextLoads() {
     }
 
+    // Author Tests
+    @Test
+    public void testGetAllAuthors(){
+        List<Author> authors = authorRepository.findAll();
+        assertThat(authors.size()).isEqualTo(11);
+    }
+
     @Test
     public void testFindAuthorByNameContainingIgnoreCase(){
         List<Author> list1 = authorRepository.findAuthorsByNameIsContainingIgnoreCase("robert");
         assertThat(list1.size()).isEqualTo(1);
+    }
+
+    @Test
+    public void testDeleteAuthorById(){
+        authorRepository.deleteById(1L);
+        List<Author> authors = authorRepository.findAll();
+        assertThat(authors.size()).isEqualTo(10);
     }
 
 

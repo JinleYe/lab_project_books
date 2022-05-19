@@ -47,9 +47,9 @@ public class AuthorController {
     }
 
     // Delete
-    @DeleteMapping
-    public void deleteAuthorById(Long id){
-        authorRepository.deleteAuthorById(id);
+    @DeleteMapping("/delete-{id}")
+    public void deleteAuthorById(@PathVariable Long id){
+        authorRepository.deleteById(id);
     }
 
 

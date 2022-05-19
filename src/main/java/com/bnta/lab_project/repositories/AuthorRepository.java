@@ -9,6 +9,6 @@ public interface AuthorRepository extends JpaRepository<Author, Long> {
 
     List<Author> findAuthorsByNameIsContainingIgnoreCase(String name);
 
-    void deleteAuthorById(Long id);
+//    void deleteById(Long id);
 
 }
