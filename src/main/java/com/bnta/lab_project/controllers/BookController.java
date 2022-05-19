@@ -29,11 +29,25 @@ public class BookController {
         return new ResponseEntity<>(bookRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/index-{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Optional<Book>> getBookById(@PathVariable Long id){
         var book = bookRepository.findById(id);
         return new ResponseEntity<>(book, book.isEmpty()? HttpStatus.NOT_FOUND : HttpStatus.FOUND);
     }
+
+    @GetMapping("/search-price={price}")
+    public ResponseEntity<List<Book>> getBookByPriceOrderByAsc(@PathVariable float price){
+        var found = bookRepository.findBooksByPriceIsLessThanOrderByPriceAsc(price);
+        return new ResponseEntity<>(found, found.isEmpty()? HttpStatus.NOT_FOUND : HttpStatus.FOUND);
+    }
+
+    @GetMapping("/review/greater-{star}")
+    public List<Book> getBookReviewGreaterThan(@PathVariable int star){
+        var result = bookRepository.findBookReviewGreaterThan(star);
+        return result;
+    }
+
+
 
     @PostMapping
     public void createNewBook(@RequestBody Book book){
