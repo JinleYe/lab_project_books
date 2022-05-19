@@ -22,8 +22,8 @@ public class Category {
     @JsonIgnoreProperties(value = "categories")
     @JoinTable(
             name = "categories_books",
-            joinColumns = {@JoinColumn(name = "category_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "book_id", nullable = false)}
+            joinColumns = {@JoinColumn(name = "category_id", nullable = true)},
+            inverseJoinColumns = {@JoinColumn(name = "book_id", nullable = true)}
     )
     private List<Book> books;
 

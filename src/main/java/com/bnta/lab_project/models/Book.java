@@ -2,6 +2,7 @@ package com.bnta.lab_project.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DynamicUpdate
 @Table(name = "books")
 public class Book {
 
@@ -25,15 +27,18 @@ public class Book {
     @Column
     private Float price;
 
+    // @ManyToMany(mappedBy = "books", cascade = CascadeType.REMOVE) cascade not that good
     @ManyToMany(mappedBy = "books")
     @JsonIgnoreProperties(value = "books")
     private List<Author> authors;
 
+    // @ManyToMany(mappedBy = "books", cascade = CascadeType.REMOVE) cascade not that good
     @ManyToMany(mappedBy = "books")
     @JsonIgnoreProperties(value = "books")
     private List<Category> categories;
 
-    @OneToMany(mappedBy = "book")
+    // one to many is okay to use cascade when deleting book
+    @OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties(value = "book")
     private List<Review> reviews;
 
@@ -100,6 +105,31 @@ public class Book {
         this.reviews = comments;
     }
 
+
+    // remove and add authors, categories, reviews
+    public void addAuthor(Author author){
+        this.authors.add(author);
+    }
+
+    public void removeAuthor(Author author){
+        this.authors.remove(author);
+    }
+
+    public void addCategory(Category category){
+        this.categories.add(category);
+    }
+
+    public void removeCategory(Category category){
+        this.categories.remove(category);
+    }
+
+    public void addReview(Review review){
+        this.reviews.add(review);
+    }
+
+    public void removeReview(Review review){
+        this.reviews.remove(review);
+    }
 
 
 }

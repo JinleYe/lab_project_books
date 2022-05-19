@@ -2,12 +2,14 @@ package com.bnta.lab_project.models;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@DynamicUpdate
 @Table(name = "authors")
 public class Author {
 
@@ -24,8 +26,8 @@ public class Author {
     @JsonIgnoreProperties(value = "authors")
     @JoinTable(
             name = "authors_books",
-            joinColumns = {@JoinColumn(name = "author_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "book_id", nullable = false)}
+            joinColumns = {@JoinColumn(name = "author_id", nullable = true)},
+            inverseJoinColumns = {@JoinColumn(name = "book_id", nullable = true)}
     )
     private List<Book> books;
 

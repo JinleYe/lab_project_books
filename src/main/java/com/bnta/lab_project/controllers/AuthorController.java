@@ -2,6 +2,7 @@ package com.bnta.lab_project.controllers;
 
 
 import com.bnta.lab_project.models.Author;
+import com.bnta.lab_project.models.Category;
 import com.bnta.lab_project.repositories.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

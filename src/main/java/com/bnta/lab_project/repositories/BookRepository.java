@@ -18,6 +18,9 @@ public interface BookRepository extends JpaRepository<Book, Long> {
     @Query("SELECT b FROM Book b JOIN b.reviews r WHERE r.starNumber > :starNumber")
     List<Book> findBookReviewGreaterThan(@Param("starNumber") int starNumber);
 
+    @Query("SELECT AVG(r.starNumber) FROM Book b JOIN b.reviews r WHERE b.id = :id ")
+    double findReviewAvgByBookId(@Param("id") Long id);
+
 
 
 }
